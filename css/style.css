@@ -1,0 +1,46 @@
+* {
+    font-family: 'Acme', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+#choice {
+    display: inline-flex;
+    flex-direction: row; 
+    justify-content: center;
+    align-content: baseline;
+    align-items: baseline;
+    /* width: 250px; 
+    height: 100px;  */
+    margin-bottom: 25px; 
+}
+/* img {
+    height: auto; 
+    width: auto; 
+} */
+.short {
+border: 2px solid black;
+}
+.medium {
+    border: 2px solid black;
+    }
+.long {
+    border: 2px solid black;
+    }
+.short img {
+    max-width: 68%;
+    max-height: 68%; 
+}
+.medium img {
+    max-width: 85%;
+    max-height: 85%; 
+}
+.long img {
+    max-width: 90%;
+    max-height: 90%; 
+}
+.modal h1 {
+    text-align: center; 
+}
+.modal p {
+    font-size: small;
+}

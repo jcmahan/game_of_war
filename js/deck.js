@@ -3,7 +3,9 @@ class Card {
     this.display = display; 
     this.value = value; 
   }
-  }
+}
+
+
   var deck = []; 
   
   var suits = ["c", "s", "h", "d"];
@@ -37,37 +39,7 @@ class Card {
 //     return Math.floor(Math.random() * (max - min + 1)) + min;
 // }
 
-// var shuffledDeck = [];
-// Array.prototype.shuffle = function() {
-//   var input = this;
-   
-//   for (var i = input.length-1; i >=0; i--) {   
-//       var randomCardNumber = Math.floor(Math.random()*(i+1)); 
-//       var itemAtIndex = input[randomCardNumber]; 
-//       input[randomCardNumber] = input[i]; 
-//       input[i] = itemAtIndex;
-//   }
-//   return input;
-// }
 
-// Array.prototype.deal = function() {
-
-//   var userArray = [];
-//   var computerArray = [];
-
-//   for (let i = 0; i < this.length; i++) {
-    
-//       if ((i % 2) === 0) {
-//         userArray.push(this[i]);
-//       } else {
-//         computerArray.push(this[i])
-//       }
-
-//     }
-//     return [ userArray, computerArray ]
-// }
-// deck.shuffle();
-// deck.deal(); 
 
 var shuffledDeck = [];
 
@@ -84,15 +56,3 @@ shuffleDeck();
 
 var userArray = [];
 var computerArray = [];
-
-function deal() {
-  for (let i = 0; i < shuffledDeck.length; i++) {    
-    if ((i % 2) === 0) {
-      userArray.push(shuffledDeck[i]);
-    } else {
-      computerArray.push(shuffledDeck[i])
-    }
-  }
-  return [ userArray, computerArray ];
-} 
-deal();

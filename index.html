@@ -6,42 +6,47 @@
     <link rel="stylesheet" href="css/css/cardstarter.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
-    <script src="js/card.js"></script>
-    <script src="js/war.js"></script>
+    <script src="js/deck.js"></script>
+    <script defer src="js/war.js"></script>
     <title>The Game of War</title>
 </head>
 <body>
-    <h1>The Game of WAR</h1>
-    <div class="messaging"></div>
-    <h2>BATTLE STATUS</h2>
-    <div id="chartContainer"></div>
-    <h3 id="playerName"></h3>
-    <h3>Computer</h3>
-    <div class="playerStack"></div>
-    <div class="battleField"></div>
-    <div class="computerStack"></div>
-    <h4 id="playerCardCount"></h4>
-    <h4 id="computerCardCount"></h4>
-    <div id=modal class="modal">
+    <main>
+        <h1>The Game of WAR</h1>
+        <div class="messaging"></div>
+        <h2>BATTLE STATUS</h2>
+        <div id="chartContainer"></div>
+        <h3 id="playerName"></h3>
+        <h3>Computer</h3>
+        <div class="playerStack"></div>
+        <div class="battleField"></div>
+        <div class="computerStack"></div>
+        <h4 id="playerCardCount"></h4>
+        <h4 id="computerCardCount"></h4>
+    </main>
+    <div id="modal" class="modal">
         <h1>Choose your game length:<h1>
-            <div id="choice">
-            <div class="short">
+        <div id="choice">
+            <div id="length_36">
                 <img src="images/game_length_images/6_day_war.jpg" alt="The Six-Day War">
                 <p>The Six-Day War</p>
+                <p>(each player starts with 8 cards)</p>
             </div> 
-            <div class="medium">
+            <div id="length_22">
                 <img src ="images/game_length_images/e54ffe11e2f2c6e49bc7ab17fdb487d6_six_column.png" alt="The Revolutionary War">
                 <p>The U.S. Revolutionary War</p>
+                <p>(each player starts with 15 cards)</p>
             </div>
-            <div class="long">
+            <div id="length_0">
                 <img src ="images/game_length_images/hundred-years-war-1337-1453-science-source.jpg" alt="The Hundred Years War">
                 <p>The Hundred Years War</p>
+                <p>(each player starts with 23 cards)</p>
             </div>
-            </div>
-            <p>WAR is a very simple card game. The goal? Get all your opponent's cards. How? Each player turns over one card... highest card value wins!
-                (Deuces are low, Aces high.) If you win battle, you claim the cards on the field. If the cards are tied, a WAR ensues. 
-                Each player puts down another card, and highest value wins. First to collect all the cards wins the Total War & achieves world domination. 
-            </p>
+        </div>
+        <p>WAR is a very simple card game. The goal? Get all your opponent's cards. How? Each player turns over one card... highest card value wins!
+            (Deuces are low, Aces high.) If you win battle, you claim the cards on the field. If the cards are tied, a WAR ensues. 
+            Each player puts down another card, and highest value wins. First to collect all the cards wins the Total War & achieves world domination. 
+        </p>
             
     </div>
 </body>

@@ -17,24 +17,24 @@
     height: auto; 
     width: auto; 
 } */
-.short {
+/* #length_36 {
 border: 2px solid black;
 }
-.medium {
+#length_22 {
     border: 2px solid black;
     }
-.long {
+#length_0 {
     border: 2px solid black;
-    }
-.short img {
+    } */
+#length_36 img {
     max-width: 68%;
     max-height: 68%; 
 }
-.medium img {
+#length_22 img {
     max-width: 85%;
     max-height: 85%; 
 }
-.long img {
+#length_0 img {
     max-width: 90%;
     max-height: 90%; 
 }
@@ -43,4 +43,65 @@ border: 2px solid black;
 }
 .modal p {
     font-size: small;
+}
+.modal {
+    /* display: none;  */
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+}
+.modal-content {
+    /* background-color: #fefefe; */
+    margin: 25% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 75%; 
+}
+main {
+    background-image: url('../images/camo_images/700_FO69952069_c9d109edb493cb31debb3344d1dc10b4.jpg');    
+    background-color: slategrey; 
+    display: none; 
+    height: 1000px; 
+    width: 1000px; 
+
+}
+.messaging {
+    border: 2px solid black; 
+    background-color: blue; 
+    width: 200px; 
+}
+#chartContainer {
+    border: 2px solid black;
+    background-color: violet; 
+    width: 50px; 
+}
+.playerStack {
+    border: 2px solid black; 
+    background-color: brown; 
+    width: 75px; 
+}
+.battlefield {
+    border: 2px solid black; 
+    background-color: lime; 
+    width: 150px; 
+}
+.computerstack {
+    border: 2px solid black;
+    background-color: red;
+    width: 75px;   
+}
+#playerCardCount {
+    border: 2px solid black; 
+    background-color: yellow;
+    width: 50px;      
+}
+#computerCardCount {
+    border: 2px solid black; 
+    background-color: orangered;
+    width: 50px; 
 }

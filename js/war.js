@@ -1,26 +1,46 @@
 /*----- constants -----*/
 var lookupTies = {
-    "s" : 4,
-    "h" : 3,
-    "d" : 2,
-    "c" : 1
+    "s": 4,
+    "h": 3,
+    "d": 2,
+    "c": 1
 };
-
+var cardSuits = {
+    "c" : "Clubs",
+    "s" : "Spades",
+    "h" : "Hearts",
+    "d" : "Diamonds"
+}
+var cardFaces = {
+"02"  : "Two of ",
+"03" : "Three of ",
+"04" : "Four of ",
+"05" : "Five of ",
+"06" : "Six of ",
+"07" : "Seven of ",
+"08" : "Eight of ",
+"09" : "Nine of ",
+"10" : "Ten of ",
+"J" : "Jack of ",
+"Q" : "Queen of ",
+"K" : "King of ",
+"A" : "Ace of "
+}
 /*----- app's state (variables) -----*/
 
-var userArray
-var computerArray
-var playerPercent
-var winner
+var userHand;
+var computerHand;
+var playerPercent;
+var winner;
 
 // var computerPercent might not be needed? Depends on calculation of the table
-var battle
+var battle;
 
 // War arrays below intended to store the cards played for the WAR element. Also, array.slice
 // each player's cards in a separate array case they have to be returned?
-var warArray
-var pOneWar
-var computerWar
+var warArray;
+var pOneWar;
+var computerWar;
 
 
 /*----- cached element references -----*/
@@ -31,87 +51,88 @@ var playerName = document.getElementById("playerName");
 var showModal = document.getElementById("modal");
 var message = document.querySelector(".messaging");
 var showMain = document.querySelector("main");
-var p1Cards = document.getElementById("playerDeck");
+var p1Cards = document.getElementById("playerStack");
 var compCards = document.querySelector(".computerStack");
 var playerCount = document.querySelector(".playerCardCount");
 var computerCount = document.querySelector(".computerCardCount");
-var userCard = document.getElementById("userCard");
 var computerCard = document.getElementById("computerCard");
+var compareButton = document.getElementById("compare");
+var playerBattlefield = document.getElementById("playerBattlefield");
+var computerBattlefield = document.getElementById("computerBattlefield");
 
 /*----- event listeners -----*/
 document.querySelector('#choice').addEventListener('click', chooseLength);
-// document.querySelector('.playerStack').addEventListener('click', playGame);
-document.querySelector("img").addEventListener("click", playGame);
+p1Cards.addEventListener("click", playGame);
+compareButton.addEventListener("click", checkValue);
 
 /*----- functions -----*/
 function initialize() {
     gameLength = 0;
-    userArray = [];
-    computerArray = [];
+    userHand = [];
+    computerHand = [];
     pOneWar = [];
     computerWar = [];
     winner = "";
-    message.innerHTML = `You're up first, soldier!`;
+    message.innerHTML = `You're up first, soldier! Click on the deck to get started.`;
 }
-
 initialize();
 
-    //show modal - check
-    // get input from player for length of game - check 
-    // hide modal - check 
-    // splice user and computer arrays down to desired length - check 
-    // set battle status to 50/50 - tbd
-    // 
+//show modal - check
+// get input from player for length of game - check 
+// hide modal - check 
+// splice user and computer arrays down to desired length - check 
+// set battle status to 50/50 - tbd
+// 
 
 function chooseLength(e) {
-    var gameLength = parseInt(e.path[1].id.replace('length_', "")); 
+    var gameLength = parseInt(e.path[1].id.replace('length_', ""));
     shuffledDeck.splice(0, gameLength);
     deal();
     render();
 }
 
 function deal() {
-    for (let i = 0; i < shuffledDeck.length; i++) {    
-      if ((i % 2) === 0) {
-        userArray.push(shuffledDeck[i]);
-      } else {
-        computerArray.push(shuffledDeck[i])
-      }
+    for (let i = 0; i < shuffledDeck.length; i++) {
+        if ((i % 2) === 0) {
+            userHand.push(shuffledDeck[i]);
+        } else {
+            computerHand.push(shuffledDeck[i])
+        }
     }
-    return [ userArray, computerArray ];
-} 
+    return [userHand, computerHand];
+}
 
 function playGame(e) {
-    console.log("battle on!");
-    console.log('userArray', userArray);
-    console.log('computerArray', computerArray);
+    console.log('userHand', userHand);
+    console.log('computerHand', computerHand);
     console.log('pOneWar', pOneWar);
     console.log('computeWar', computerWar);
-    
-    pOneWar.push(userArray.shift()); 
-    computerWar.push(computerArray.shift());
-    render();
+
+    pOneWar.push(userHand.shift());
+    computerWar.push(computerHand.shift());
     checkValue();
+    checkWinner();
+    render();
 }
 // hit button
 // cards are dealt to field
 // evaulate winner logic
-    // if player wins, push cards to userArray
-    // if computer wins, push cards to computerArray
-    //if tie, start WAR
-        // if WAR:
-        // evaluate user and computer arrays to ensure enough cards are there
-            //if not, final War happens
-        // else, deal new cards to field
-        // evaluate winner logic 
-            // if player wins, push cards to userArray
-            // if computer wins, push cards to computerArray
-            //if tie, start WAR again
+// if player wins, push cards to userHand
+// if computer wins, push cards to computerHand
+//if tie, start WAR
+// if WAR:
+// evaluate user and computer arrays to ensure enough cards are there
+//if not, final War happens
+// else, deal new cards to field
+// evaluate winner logic 
+// if player wins, push cards to userHand
+// if computer wins, push cards to computerHand
+//if tie, start WAR again
 
-function checkWinner(){
-    if (userArray.length === 0) {
+function checkWinner() {
+    if (userHand.length === 0) {
         message.innerHTML = "You have been defeated. Loser!";
-    } else if (computerArray === 0) {
+    } else if (computerHand === 0) {
         message.innerHTML = "Victory is yours!";
     } else {
         message.innerHTML = "Time for battle!!!";
@@ -119,36 +140,41 @@ function checkWinner(){
 }
 
 function checkValue() {
-    if ((pOneWar[pOneWar.length-1].value) === (computerWar[computerWar.length-1].value)) {
-        startWar();
-    } else if ((pOneWar[pOneWar.length-1].value) > (computerWar[computerWar.length-1].value)) {
+    if ((pOneWar[pOneWar.length - 1].value) === (computerWar[computerWar.length - 1].value)) {
+        startWar(); 
+    } else if ((pOneWar[pOneWar.length - 1].value) > (computerWar[computerWar.length - 1].value)) {
         playerWins();
     } else {
         computerWins();
     }
+    render();
 }
 
 function startWar() {
-    pOneWar.push(userArray.shift());
-    pOneWar.push(userArray.shift());          
-    computerWar.push(computerArray.shift());
-    computerWar.push(computerArray.shift());
+    message.innerHTML = "A tie! Time for WAR!!!"
+    assess();
+    pOneWar.push(userHand.shift());
+    pOneWar.push(userHand.shift());
+    computerWar.push(computerHand.shift());
+    computerWar.push(computerHand.shift());
 
     checkValue();
 }
 
 function playerWins() {
-    userArray.push(...pOneWar.splice(0, pOneWar.length)) 
-    userArray.push(...computerWar.splice(0, computerWar.length))
+    message.innerHTML = `Player One wins, as a ${Card.cardFaces} beats a ${Card.cardFaces}`
+    userHand.push(...pOneWar.splice(0, pOneWar.length))
+    userHand.push(...computerWar.splice(0, computerWar.length))
 };
 
 function computerWins() {
-    computerArray.push(...pOneWar.splice(0, pOneWar.length)) 
-    computerArray.push(...computerWar.splice(0, computerWar.length))
+    message.innerHTML = `The Computer defeated you! A ${Card.cardFaces} beats a ${Card.cardFaces}`
+    computerHand.push(...pOneWar.splice(0, pOneWar.length))
+    computerHand.push(...computerWar.splice(0, computerWar.length))
 }
 
 function assess() {
-    if (userArray.length > 2 || computerArray > 2) {
+    if (userHand.length > 2 || computerHand.length > 2) {
         startFinalWar();
     } else {
         startWar();
@@ -156,33 +182,40 @@ function assess() {
 }
 
 function startFinalWar() {
-    var userValue = userArray[0].display[0];
-    var compValue = computerArray[0].display[0];
-    if (lookupTies[userValue] > lookupTies[computerValue]) {
+    var userValue = userHand[0].display[0];
+    var compValue = computerHand[0].display[0];
+    if (lookupTies[userValue] > lookupTies[compValue]) {
         playerWins();
     } else {
         computerWins();
     }
 }
-    
-function render() {
-    document.querySelector('#modal').style.display = userArray.length ? 'none' : 'display';
-    document.querySelector('main').style.display = userArray.length ? 'flex' : 'none';
-    playerCount.innerHTML = `Player has ` + userArray.length + ` cards in deck.`; 
-    computerCount.innerHTML = `Computer has ` + computerArray.length + ` cards in deck.`;
 
-   
+function render() {
+    document.querySelector('#modal').style.display = userHand.length ? 'none' : 'display';
+    document.querySelector('main').style.display = userHand.length ? 'flex' : 'none';
+    playerCount.innerHTML = `Player has ` + userHand.length + ` cards in deck.`;
+    computerCount.innerHTML = `Computer has ` + computerHand.length + ` cards in deck.`;
+
     computerHtml = "";
     userHtml = "";
-    // computerArray.forEach(function(card){
+    // computerHand.forEach(function(card){
     //     computerHtml += `<div class="card ${card.display}"></div>`; 
     // })
-    // userArray.forEach(function(card) {
+    // userHand.forEach(function(card) {
     //     userHtml += `div class ="card ${card.display}"></div>`;
     // })
+    if (pOneWar.length > 0 &&  computerWar.length > 0)  {
+        playerBattlefield.innerHTML = `<div class="card ${pOneWar[0].display}"></div>`;
+        computerBattlefield.innerHTML = `<div class="card ${computerWar[0].display}"></div>`;
+    }
+}    
 
-    console.log('pOneWar', pOneWar)
-    userCard.innerHTML = `<div class="card ${pOneWar.display}"></div>`;
-    computerCard.innerHTML = `<div class="card ${computerWar.display}"></div>`;
-}
-    
+//     if (pOneWar !== [] && computerWar !== []) {
+//     playerBattlefield.innerHTML = `<div class="card ${pOneWar[0].display}"></div>`;
+//     computerBattlefield.innerHTML = `<div class="card ${computerWar[0].display}"></div>`;
+//     } else {
+//         return;
+//     }
+// }
+

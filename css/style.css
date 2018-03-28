@@ -9,23 +9,8 @@
     justify-content: center;
     align-content: baseline;
     align-items: baseline;
-    /* width: 250px; 
-    height: 100px;  */
     margin-bottom: 25px; 
 }
-/* img {
-    height: auto; 
-    width: auto; 
-} */
-/* #length_36 {
-border: 2px solid black;
-}
-#length_22 {
-    border: 2px solid black;
-    }
-#length_0 {
-    border: 2px solid black;
-    } */
 #length_36 img {
     max-width: 68%;
     max-height: 68%; 
@@ -105,22 +90,34 @@ section {
     justify-content: space-around;
     align-content: bottom;
 }
-.battlefield {
+.battlefield { 
     border: 2px solid black; 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    justify-content: center; 
+    display: flex; 
+    position: absolute;
+    top: 45%;
+    left: 32%;
+    /* transform: translate(-50%, -50%); */
+    justify-content: row;  
 }
-.battlefield img {
-    /* display: none;  */
-    opacity: .20;
-    border: 3px solid black;
+#playerBattlefield {
+    width: 225px;
+    height: 300px; 
+}
+#computerBattlefield {
+    width: 225px;
+    height: 300px; 
+}
+#playerStack {
+    width: 225px;
+    height: 300px; 
+}
+#computerStack {
+    width: 225px;
+    height: 300px; 
 }
 #player {
     position: absolute; 
-    left: 0px;  
+    left: 2px;  
 }
 #computer {
     position: absolute;
@@ -133,12 +130,6 @@ section {
 #computer h3 {
     font-weight: bolder;
     text-align: center; 
-}
-#player img {
-    background-color: white; 
-}
-#computer img {
-    background-color: white; 
 }
 #player h4 {
     position: absolute; 
@@ -170,4 +161,13 @@ section {
    color: white; 
    text-align: center;
    margin-left: 50px;
+}
+#compare {
+    font-size: 14px; 
+    background-color: #A80000;
+    margin: 0 auto;
+    padding: 5px;
+    display: flex;
+    justify-content: center; 
+    height: 25px; 
 }

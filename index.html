@@ -11,21 +11,35 @@
     <title>The Game of War</title>
 </head>
 <body>
+    <h1>The Game of WAR</h1>
     <main>
-        <h1>The Game of WAR</h1>
-        <div class="messaging"></div>
-        <h2>BATTLE STATUS</h2>
-        <div id="chartContainer"></div>
-        <h3 id="playerName"></h3>
-        <h3>Computer</h3>
-        <div class="playerStack"></div>
-        <div class="battleField"></div>
-        <div class="computerStack"></div>
-        <h4 id="playerCardCount"></h4>
-        <h4 id="computerCardCount"></h4>
+        <div class="messaging">
+
+        </div>
+
+        <div id="chartContainer">
+            <h2>BATTLE STATUS</h2>
+        </div>
+        <div id="player">        
+            <h3>SOLDIER</h3>
+            <h4 class="playerCardCount">""</h4>
+            <div class="playerStack"></div>
+            <img id="playerDeck" src="css/images/backs/blue.svg">
+        </div>        
+        <div class="battlefield">
+                <img id="userCard" src="css/images/backs/blue.svg">
+                <img id="computerCard" src="css/images/backs/blue.svg">
+        </div>
+        
+        <div id="computer">
+            <h3>COMPUTER</h3>
+            <h4 class="computerCardCount">""</h4>
+            <div class="computerStack"></div>
+            <img src="css/images/backs/blue.svg">
+        </div>
     </main>
     <div id="modal" class="modal">
-        <h1>Choose your game length:<h1>
+        <h2>Choose your game length:</h2>
         <div id="choice">
             <div id="length_36">
                 <img src="images/game_length_images/6_day_war.jpg" alt="The Six-Day War">
@@ -45,9 +59,8 @@
         </div>
         <p>WAR is a very simple card game. The goal? Get all your opponent's cards. How? Each player turns over one card... highest card value wins!
             (Deuces are low, Aces high.) If you win battle, you claim the cards on the field. If the cards are tied, a WAR ensues. 
-            Each player puts down another card, and highest value wins. First to collect all the cards wins the Total War & achieves world domination. 
+            Each player plays one card face down, and goes to battle again! The highest value wins. First to collect all the cards wins the Total War & achieves world domination. 
         </p>
-            
     </div>
 </body>
 </html>

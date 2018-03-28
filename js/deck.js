@@ -1,3 +1,8 @@
+/*----- cached element references -----*/
+var p1Cards = document.getElementsByClassName("playerStack");
+var compCards = document.getElementsByClassName("computerStack");
+
+
 class Card {
     constructor(display, value) {
     this.display = display; 
@@ -7,9 +12,9 @@ class Card {
 
 
   var deck = []; 
-  
+  deck = deck.map(card => card.face = card.suit + card.face)
   var suits = ["c", "s", "h", "d"];
-  var faces = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+  var faces = ["02", "03", "04", "05", "06", "07", "08", "0x9", "10", "J", "Q", "K", "A"];
   
   suits.forEach(function(suit){
     faces.forEach(function(face){
@@ -56,3 +61,5 @@ shuffleDeck();
 
 var userArray = [];
 var computerArray = [];
+
+

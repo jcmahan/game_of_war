@@ -1,10 +1,5 @@
 /*----- constants -----*/
-var lookupTies = {
-    "s" : 4,
-    "h" : 3,
-    "d" : 2,
-    "c" : 1
-};
+
 
 /*----- app's state (variables) -----*/
 
@@ -29,19 +24,17 @@ var mediumLength = document.getElementById('length_22');
 var longLength = document.getElementById('length_0');
 var playerName = document.getElementById("playerName");
 var showModal = document.getElementById("modal");
-var message = document.querySelector(".messaging");
-var showMain = document.querySelector("main");
-var p1Cards = document.getElementById("playerDeck");
-var compCards = document.querySelector(".computerStack");
-var playerCount = document.querySelector(".playerCardCount");
-var computerCount = document.querySelector(".computerCardCount");
-var userCard = document.getElementById("userCard");
-var computerCard = document.getElementById("computerCard");
+var message = document.getElementsByClassName("messaging");
+var showMain = document.getElementsByClassName("main");
+var p1Cards = document.getElementsByClassName("playerStack");
+var compCards = document.getElementsByClassName("computerStack");
+var playerCount = document.getElementsByClassName("playerCardCount");
+var computerCount = document.getElementsByClassName("computerCardCount");
 
 /*----- event listeners -----*/
 document.querySelector('#choice').addEventListener('click', chooseLength);
 // document.querySelector('.playerStack').addEventListener('click', playGame);
-document.querySelector("img").addEventListener("click", playGame);
+document.querySelector("button").addEventListener("click", playGame);
 
 /*----- functions -----*/
 function initialize() {
@@ -51,9 +44,7 @@ function initialize() {
     pOneWar = [];
     computerWar = [];
     winner = "";
-    message.innerHTML = `You're up first, soldier!`;
 }
-
 initialize();
 
     //show modal - check
@@ -69,7 +60,6 @@ function chooseLength(e) {
     deal();
     render();
 }
-
 function deal() {
     for (let i = 0; i < shuffledDeck.length; i++) {    
       if ((i % 2) === 0) {
@@ -79,18 +69,17 @@ function deal() {
       }
     }
     return [ userArray, computerArray ];
-} 
+  } 
 
 function playGame(e) {
     console.log("battle on!");
-    console.log('userArray', userArray);
-    console.log('computerArray', computerArray);
-    console.log('pOneWar', pOneWar);
-    console.log('computeWar', computerWar);
+    console.log(userArray);
+    console.log(computerArray);
+    console.log(pOneWar);
+    console.log(computerWar);
     
-    pOneWar.push(userArray.shift()); 
-    computerWar.push(computerArray.shift());
-    render();
+    pOneWar.push(...userArray.splice(0,1)); 
+    computerWar.push(...computerArray.splice(0,1))
     checkValue();
 }
 // hit button
@@ -116,25 +105,22 @@ function checkWinner(){
     } else {
         message.innerHTML = "Time for battle!!!";
     }
-}
 
 function checkValue() {
-    if ((pOneWar[pOneWar.length-1].value) === (computerWar[computerWar.length-1].value)) {
+    if (pOneWar[0].value === computerWar[0].value) {
         startWar();
-    } else if ((pOneWar[pOneWar.length-1].value) > (computerWar[computerWar.length-1].value)) {
+    } else if (pOneWar[0].value > computerWar[0].value) {
         playerWins();
-    } else {
+        } else {
         computerWins();
     }
 }
 
 function startWar() {
-    pOneWar.push(userArray.shift());
-    pOneWar.push(userArray.shift());          
-    computerWar.push(computerArray.shift());
-    computerWar.push(computerArray.shift());
-
+    pOneWar.push(...userArray.splice(0,2))     
+    computerWar.push(...computerArray.splice(0,2))
     checkValue();
+    
 }
 
 function playerWins() {
@@ -151,38 +137,24 @@ function assess() {
     if (userArray.length > 2 || computerArray > 2) {
         startFinalWar();
     } else {
-        startWar();
+        {startWar();
+        }
     }
 }
 
 function startFinalWar() {
-    var userValue = userArray[0].display[0];
-    var compValue = computerArray[0].display[0];
-    if (lookupTies[userValue] > lookupTies[computerValue]) {
+    if (userArray[0].value === computerArray[0].value) {
+    } else if (userArray[0].value > computerArray[0].value) {
         playerWins();
-    } else {
+        } else {
         computerWins();
     }
+}
 }
     
 function render() {
     document.querySelector('#modal').style.display = userArray.length ? 'none' : 'display';
     document.querySelector('main').style.display = userArray.length ? 'flex' : 'none';
-    playerCount.innerHTML = `Player has ` + userArray.length + ` cards in deck.`; 
-    computerCount.innerHTML = `Computer has ` + computerArray.length + ` cards in deck.`;
-
-   
-    computerHtml = "";
-    userHtml = "";
-    // computerArray.forEach(function(card){
-    //     computerHtml += `<div class="card ${card.display}"></div>`; 
-    // })
-    // userArray.forEach(function(card) {
-    //     userHtml += `div class ="card ${card.display}"></div>`;
-    // })
-
-    console.log('pOneWar', pOneWar)
-    userCard.innerHTML = `<div class="card ${pOneWar.display}"></div>`;
-    computerCard.innerHTML = `<div class="card ${computerWar.display}"></div>`;
+    playerCount.innerHTML = `Player has ` + userArray.length + `cards in deck.`; 
+    computerCount.innerHTML = `Computer has ` + computerArray.length + `cards in deck.`;
 }
-    

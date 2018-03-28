@@ -38,7 +38,7 @@ border: 2px solid black;
     max-width: 90%;
     max-height: 90%; 
 }
-.modal h1 {
+.modal h2 {
     text-align: center; 
 }
 .modal p {
@@ -49,14 +49,14 @@ border: 2px solid black;
     position: fixed; 
     z-index: 1; 
     left: 0;
-    top: 0;
+    top: 50px;
     width: 100%; 
     height: 100%; 
     overflow: auto; 
     background-color: rgba(0,0,0,0.4); 
 }
 .modal-content {
-    /* background-color: #fefefe; */
+    background-color: #fefefe;
     margin: 25% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -64,44 +64,110 @@ border: 2px solid black;
 }
 main {
     background-image: url('../images/camo_images/700_FO69952069_c9d109edb493cb31debb3344d1dc10b4.jpg');    
+    background-repeat: repeat; 
+    background-size: cover; 
     background-color: slategrey; 
     display: none; 
-    height: 1000px; 
-    width: 1000px; 
-
+    min-height: 625px; 
+    flex-direction: row; 
+    align-items: flex-end; 
 }
-.messaging {
-    border: 2px solid black; 
-    background-color: blue; 
-    width: 200px; 
+h1 {
+    width: 250px; 
+    margin-top: none; 
+    opacity: .25;
 }
-#chartContainer {
-    border: 2px solid black;
-    background-color: violet; 
-    width: 50px; 
-}
-.playerStack {
-    border: 2px solid black; 
-    background-color: brown; 
-    width: 75px; 
-}
-.battlefield {
-    border: 2px solid black; 
-    background-color: lime; 
-    width: 150px; 
-}
-.computerstack {
-    border: 2px solid black;
-    background-color: red;
-    width: 75px;   
-}
-#playerCardCount {
+.playerCardCount {
     border: 2px solid black; 
     background-color: yellow;
     width: 50px;      
 }
-#computerCardCount {
+.computerCardCount {
     border: 2px solid black; 
     background-color: orangered;
-    width: 50px; 
+    width: 50px;
+}
+.messaging {
+    border: 2px solid black; 
+    color: white; 
+    font-size: 24px; 
+    font-weight: bolder;
+    background-color: rgba (112,128,144,.25); 
+    width: 500px; 
+    height: 90px; 
+    position: fixed;
+    top: 50px; 
+}
+section {
+    background-image: url('../images/camo_images/700_FO69952069_c9d109edb493cb31debb3344d1dc10b4.jpg');
+    display: grid; 
+    align-items: center; 
+    justify-content: space-around;
+    align-content: bottom;
+}
+.battlefield {
+    border: 2px solid black; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center; 
+}
+.battlefield img {
+    /* display: none;  */
+    opacity: .20;
+    border: 3px solid black;
+}
+#player {
+    position: absolute; 
+    left: 0px;  
+}
+#computer {
+    position: absolute;
+    right: 5px; 
+}  
+#player h3 {
+    font-weight: bolder;
+    text-align: center;
+}
+#computer h3 {
+    font-weight: bolder;
+    text-align: center; 
+}
+#player img {
+    background-color: white; 
+}
+#computer img {
+    background-color: white; 
+}
+#player h4 {
+    position: absolute; 
+    bottom: 0;
+    width: 210px; 
+    margin-top: 50px; 
+    left: 3px; 
+}
+#computer h4 {
+    position: absolute; 
+    bottom: 0;
+    width: 210px; 
+    margin-top: 25px; 
+    right: 3px; 
+}
+#chartContainer {
+    margin-top: 50px; 
+    position: fixed; 
+    top: 8px; 
+    right: 16px; 
+    background-color: rgba (0,0,0,.25);
+    width: 250px; 
+    height: 250px; 
+    border: 2px solid black; 
+}
+#chartContainer h2 {
+   position: absolute;
+   bottom: 2px;
+   color: white; 
+   text-align: center;
+   margin-left: 50px;
 }

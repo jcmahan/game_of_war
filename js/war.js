@@ -204,12 +204,7 @@ function render() {
 
     computerHtml = "";
     userHtml = "";
-    // computerHand.forEach(function(card){
-    //     computerHtml += `<div class="card ${card.display}"></div>`; 
-    // })
-    // userHand.forEach(function(card) {
-    //     userHtml += `div class ="card ${card.display}"></div>`;
-    // })
+
     if (pOneWar.length > 0 && computerWar.length > 0) {
         playerBattleString = "";
         computerBattleString = "";
@@ -225,11 +220,3 @@ function render() {
         computerBattlefield.innerHTML = computerBattleString;
     }
 }
-
-//     if (pOneWar !== [] && computerWar !== []) {
-//     playerBattlefield.innerHTML = `<div class="card ${pOneWar[0].display}"></div>`;
-//     computerBattlefield.innerHTML = `<div class="card ${computerWar[0].display}"></div>`;
-//     } else {
-//         return;
-//     }
-// }

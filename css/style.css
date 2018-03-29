@@ -11,20 +11,35 @@
     align-items: baseline;
     margin-bottom: 25px; 
 }
+#length_36 #length_22 #length_0 {
+    flex-grow: 1;
+}
 #length_36 img {
     max-width: 68%;
     max-height: 68%; 
+    margin-left: 25px;
 }
+#length_36 p {
+    margin-left: 25px; 
+}
+
 #length_22 img {
     max-width: 85%;
     max-height: 85%; 
+    margin-left: -22px;
+}
+#length_22 p {
+    margin-left: -22px;
 }
 #length_0 img {
     max-width: 90%;
     max-height: 90%; 
 }
-.modal h2 {
-    text-align: center; 
+.modal h2 { 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: xx-large;
 }
 .modal p {
     font-size: small;
@@ -65,22 +80,27 @@ h1 {
 .playerCardCount {
     border: 2px solid black; 
     background-color: yellow;
-    width: 50px;      
+    width: 50px;
+    margin-bottom: 30px;
+    margin-left: 15px;      
 }
 .computerCardCount {
     border: 2px solid black; 
     background-color: orangered;
     width: 50px;
+    margin-bottom: 30px;
+    margin-right: 11px;   
 }
 .messaging {
-    color: white; 
-    font-size: 24px; 
+    color: whitesmoke; 
+    font-size: 36px; 
     font-weight: bolder;
     background-color: rgba (112,128,144,.25); 
     width: 500px; 
     height: 90px; 
     position: fixed;
-    top: 50px; 
+    top: 75px;
+    left: 35px; 
 }
 section {
     background-image: url('../images/camo_images/700_FO69952069_c9d109edb493cb31debb3344d1dc10b4.jpg');
@@ -93,8 +113,7 @@ section {
     display: flex; 
     position: absolute;
     top: 45%;
-    left: 32%;
-    /* transform: translate(-50%, -50%); */
+    left: 33%;
     justify-content: row;  
 }
 #playerBattlefield {
@@ -158,12 +177,12 @@ canvas {
 }
 #chartContainer h2 {
    position: absolute;
-   bottom: 2px;
    color: white; 
    text-align: center;
    margin-left: 50px;
 }
 #compare {
+    display: none;
     font-size: 14px; 
     background-color: #A80000;
     margin: 0 auto;
@@ -171,10 +190,28 @@ canvas {
     display: flex;
     justify-content: center; 
     height: 25px; 
+    left: 25px;
+    margin-left: 400px;
+}
+#drawCard {
+    background-color: #A80000;
+    font-size: 14px; 
+    margin: 0 auto;
+    padding: 5px;
+    display: flex;
+    justify-content: center; 
+    height: 25px;
+    right: 25px; 
+    margin-right: 350px;
 }
 .card {
     width: 200px;
     height: 275px; 
     padding: 5px; 
     margin: 10px;
+    margin-bottom: 50px;
+}
+#instructions {
+    font-size: larger; 
+    text-align: center; 
 }

@@ -5,26 +5,28 @@ var lookupTies = {
     "d": 2,
     "c": 1
 };
+
 var cardSuits = {
-    "c" : "Clubs",
-    "s" : "Spades",
-    "h" : "Hearts",
-    "d" : "Diamonds"
+    "c": "Clubs",
+    "s": "Spades",
+    "h": "Hearts",
+    "d": "Diamonds"
 }
+
 var cardFaces = {
-"02"  : "Two of ",
-"03" : "Three of ",
-"04" : "Four of ",
-"05" : "Five of ",
-"06" : "Six of ",
-"07" : "Seven of ",
-"08" : "Eight of ",
-"09" : "Nine of ",
-"10" : "Ten of ",
-"J" : "Jack of ",
-"Q" : "Queen of ",
-"K" : "King of ",
-"A" : "Ace of "
+    "02": "Two of ",
+    "03": "Three of ",
+    "04": "Four of ",
+    "05": "Five of ",
+    "06": "Six of ",
+    "07": "Seven of ",
+    "08": "Eight of ",
+    "09": "Nine of ",
+    "10": "Ten of ",
+    "J": "Jack of ",
+    "Q": "Queen of ",
+    "K": "King of ",
+    "A": "Ace of "
 }
 /*----- app's state (variables) -----*/
 
@@ -75,6 +77,7 @@ function initialize() {
     winner = "";
     message.innerHTML = `You're up first, soldier! Click on the deck to get started.`;
 }
+
 initialize();
 
 //show modal - check
@@ -106,11 +109,10 @@ function playGame(e) {
     console.log('userHand', userHand);
     console.log('computerHand', computerHand);
     console.log('pOneWar', pOneWar);
-    console.log('computeWar', computerWar);
+    console.log('computerWar', computerWar);
 
     pOneWar.push(userHand.shift());
     computerWar.push(computerHand.shift());
-    checkValue();
     checkWinner();
     render();
 }
@@ -138,15 +140,18 @@ function checkWinner() {
         message.innerHTML = "Time for battle!!!";
     }
 }
-
 function checkValue() {
     if ((pOneWar[pOneWar.length - 1].value) === (computerWar[computerWar.length - 1].value)) {
-        startWar(); 
+        startWar();
     } else if ((pOneWar[pOneWar.length - 1].value) > (computerWar[computerWar.length - 1].value)) {
         playerWins();
     } else {
         computerWins();
     }
+
+    pOneWar.push(userHand.shift());
+    computerWar.push(computerHand.shift());
+
     render();
 }
 
@@ -162,13 +167,13 @@ function startWar() {
 }
 
 function playerWins() {
-    message.innerHTML = `Player One wins, as a ${Card.cardFaces} beats a ${Card.cardFaces}`
+    message.innerHTML = `Player One wins, as a ${cardFaces[pOneWar[0].display.slice(1)]} ${cardSuits[pOneWar[0].display[0]]} beats ${cardFaces[computerWar[0].display.slice(1)]} ${cardSuits[computerWar[0].display[0]]}`
     userHand.push(...pOneWar.splice(0, pOneWar.length))
     userHand.push(...computerWar.splice(0, computerWar.length))
 };
 
 function computerWins() {
-    message.innerHTML = `The Computer defeated you! A ${Card.cardFaces} beats a ${Card.cardFaces}`
+    message.innerHTML = `The Computer defeated you! A ${cardFaces[computerWar[0].display.slice(1)]} ${cardSuits[computerWar[0].display[0]]} beats a ${cardFaces[pOneWar[0].display.slice(1)]} ${cardSuits[pOneWar[0].display[0]]}`
     computerHand.push(...pOneWar.splice(0, pOneWar.length))
     computerHand.push(...computerWar.splice(0, computerWar.length))
 }
@@ -205,11 +210,21 @@ function render() {
     // userHand.forEach(function(card) {
     //     userHtml += `div class ="card ${card.display}"></div>`;
     // })
-    if (pOneWar.length > 0 &&  computerWar.length > 0)  {
-        playerBattlefield.innerHTML = `<div class="card ${pOneWar[0].display}"></div>`;
-        computerBattlefield.innerHTML = `<div class="card ${computerWar[0].display}"></div>`;
+    if (pOneWar.length > 0 && computerWar.length > 0) {
+        playerBattleString = "";
+        computerBattleString = "";
+        pOneWar.forEach(function(card){
+            playerBattleString += `<div class="card ${card.display}"></div>`
+        })
+
+        computerWar.forEach(function(card){
+            computerBattleString += `<div class="card ${card.display}"></div>`
+        })
+
+        playerBattlefield.innerHTML = playerBattleString;
+        computerBattlefield.innerHTML = computerBattleString;
     }
-}    
+}
 
 //     if (pOneWar !== [] && computerWar !== []) {
 //     playerBattlefield.innerHTML = `<div class="card ${pOneWar[0].display}"></div>`;
@@ -218,4 +233,3 @@ function render() {
 //         return;
 //     }
 // }
-

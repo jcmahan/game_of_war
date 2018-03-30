@@ -72,8 +72,8 @@ function initialize() {
     playerWar = [];
     computerWar = [];
     winner = "";
+    message = "";
     inWar = false;
-    message = `You're up first, soldier! Click on "Start New Battle" to get started.`;
     render();
 }
 initialize();
@@ -81,6 +81,8 @@ initialize();
 function chooseLength(e) {
     gameLength = parseInt(e.path[1].id.replace('length_', ""));
     shuffledDeck.splice(0, gameLength);
+    message = `You're up first, soldier! Click on "Start New Battle" to get started.`;
+
     deal();
     render();
 }
@@ -97,22 +99,33 @@ function deal() {
 }
 
 function doBattle(e) {
-    inWar = false;
-    playerWar = [];
-    computerWar = [];
-    playerWar.push(playerHand.shift());
-    computerWar.push(computerHand.shift());
-    checkValue();
-    if (inWar) {
-        message = "A tie! Time for WAR!!!";
+    gunshotSound.play();
+    if (playerHand === []) {
+        message = "You are a poor excuse for a soldier, Private FFM!";
+    } else if
+    (computerHand === []) {
+        message = "Victory is yours!!! Who says a human can't beat AI?";
     } else {
-        transferCards();
-        message = winner === 'p' ?
-            `Player One wins, as ${cardFaces[playerWar[0].display.slice(1)]} ${cardSuits[playerWar[0].display[0]]} beats ${cardFaces[computerWar[0].display.slice(1)]} ${cardSuits[computerWar[0].display[0]]}`
-            :
-            `The Computer defeated you, playing ${cardFaces[computerWar[0].display.slice(1)]} ${cardSuits[computerWar[0].display[0]]} which defeated ${cardFaces[playerWar[0].display.slice(1)]} ${cardSuits[playerWar[0].display[0]]}`;
+        inWar = false;
+        playerWar = [];
+        computerWar = [];
+        playerWar.push(playerHand.shift());
+        computerWar.push(computerHand.shift());
+        checkValue();
+        if (inWar) {
+            message = "A tie! Time for WAR!!!";
+            setTimeout(function(){
+                swordClash.play();
+            }, 1000)
+        } else {
+            transferCards();
+            message = winner === 'p' ?
+                `Player One wins, as ${cardFaces[playerWar[0].display.slice(1)]} ${cardSuits[playerWar[0].display[0]]} beats ${cardFaces[computerWar[0].display.slice(1)]} ${cardSuits[computerWar[0].display[0]]}`
+                :
+                `The Computer defeated you, playing ${cardFaces[computerWar[0].display.slice(1)]} ${cardSuits[computerWar[0].display[0]]} which defeated ${cardFaces[playerWar[0].display.slice(1)]} ${cardSuits[playerWar[0].display[0]]}`;
+        }
+        render();
     }
-    render();
 };
 
 
@@ -135,7 +148,7 @@ function doWar() {
     var numCardsLookup = { '36': 2, '22': 3, '0': 4 };
     var numWarCards = numCardsLookup[gameLength];
     if (playerHand.length < numWarCards) {
-        message = "  ";
+        message = "Defeated by a computer? Steve Jobs would be horrified.";
         winner = 'c';
         transferHands();
     } else if (computerHand.length < numWarCards) {
@@ -185,7 +198,16 @@ function finalTieCalc() {
         message = `The UN has decreed the Computer defeated you, playing ${cardSuits[computerWar[0].display[0]]} which crushed your ${cardSuits[playerWar[0].display[0]]}`;
     }
 }
-
+function checkForCards() {
+    if (playerHand = []) {
+        message = "You are a poor excuse for a soldier, Private FFM!";
+    } else if
+    (computerHand = []) {
+        message = "Victory is yours!!! Who says a human can't beat AI?";
+    } else {
+        message = "Time for another battle!";
+    }
+}
 
 function render() {
     modal.style.display = playerHand.length ? 'none' : 'display';
@@ -193,10 +215,18 @@ function render() {
     messageDiv.innerHTML = message;
     playerCount.innerHTML = `Player has ` + playerHand.length + ` cards in deck.`;
     computerCount.innerHTML = `Computer has ` + computerHand.length + ` cards in deck.`;
-    battleButton.style.visibility = (playerHand.length && computerHand.length) && !inWar ? 'visible' : 'hidden';
-    compareButton.style.visibility = inWar ? 'visible' : 'hidden';
+    battleButton.style.display = (playerHand.length && computerHand.length) && !inWar ? 'block' : 'none';
+    compareButton.style.display = inWar ? 'block' : 'none';
     if (playerWar.length) {
-        playerBattlefield.innerHTML = `<div class="card ${playerWar[playerWar.length - 1].display}"></div>`;
-        computerBattlefield.innerHTML = `<div class="card ${computerWar[computerWar.length - 1].display}"></div>`;
+        playerBattlefield.className = "card back";
+        computerBattlefield.className = "card back";
+        playerBattlefield.classList.add('rotate90');
+        computerBattlefield.classList.add('rotate90');
+        setTimeout(function () {
+            playerBattlefield.classList.replace('back', playerWar[playerWar.length - 1].display);
+            computerBattlefield.classList.replace('back', computerWar[computerWar.length - 1].display);
+            playerBattlefield.classList.add('rotate360');
+            computerBattlefield.classList.add('rotate360');
+        }, 500);
     }
 }

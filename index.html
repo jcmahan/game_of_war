@@ -7,25 +7,18 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
     <script src="js/deck.js"></script>
+    <script src="js/sounds.js"></script>
     <script defer src="js/war.js"></script>
-    <!-- <script defer src="js/barchart.js"></script> -->
     <title>The Game of War</title>
 </head>
 <body>
     <h1>The Game of WAR</h1>
+    <div class="messaging"></div>
     <main>
-        <div class="messaging">
-
-        </div>
-
-        <div id="chartContainer">
-            <h2>BATTLE STATUS</h2>
-            <canvas id="piechart"></canvas>
-        </div>
         <div id="player">        
             <h3>SOLDIER</h3>
-            <h4 class="playerCardCount">""</h4>
             <div id="playerStack" class="card back"></div>
+            <h4 class="playerCardCount">""</h4>
         </div>        
         <div class="battlefield">
             <div id ="playerBattlefield">
@@ -33,32 +26,31 @@
             <div id="computerBattlefield">
             </div>
         </div>
-        <button id="compare">WAR!</button>
-        <button id="drawCard">Start New Battle</button>
-        
         <div id="computer">
             <h3>COMPUTER</h3>
-            <h4 class="computerCardCount">""</h4>
             <div id="computerStack" class="card back"></div>
+            <h4 class="computerCardCount">""</h4>
         </div>
     </main>
+        <button id="compare" class="btn">WAR!</button>
+        <button id="drawCard" class="btn">Start New Battle</button>
     <div id="modal" class="modal">
         <h2>Choose your game length:</h2>
         <div id="choice">
             <div id="length_36">
                 <img src="images/game_length_images/6_day_war.jpg" alt="The Six-Day War">
-                <p>The Six-Day War</p>
-                <p>(each player starts with 8 cards)</p>
+                <p>The Six-Day War
+                <br>(each player starts with 8 cards)</p>
             </div> 
             <div id="length_22">
                 <img src ="images/game_length_images/e54ffe11e2f2c6e49bc7ab17fdb487d6_six_column.png" alt="The Revolutionary War">
-                <p>The U.S. Revolutionary War</p>
-                <p>(each player starts with 15 cards)</p>
+                <p>The U.S. Revolutionary War
+                <br>(each player starts with 15 cards)</p>
             </div>
             <div id="length_0">
                 <img src ="images/game_length_images/hundred-years-war-1337-1453-science-source.jpg" alt="The Hundred Years War">
-                <p>The Hundred Years War</p>
-                <p>(each player starts with 23 cards)</p>
+                <p>The Hundred Years War
+                <br>(each player starts with 23 cards)</p>
             </div>
         </div>
         <p id="instructions"><b>WAR</b> is a very simple card game. The goal? Get all your opponent's cards. How? Each player turns over one card... highest card value wins!

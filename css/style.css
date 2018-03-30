@@ -2,12 +2,28 @@
     font-family: 'Acme', sans-serif;
     margin: 0;
     padding: 0;
+    outline: none; 
 }
+html {
+    height: 100vh;
+}
+body {
+    background-image: url('../images/camo_images/700_FO69952069_c9d109edb493cb31debb3344d1dc10b4.jpg');    
+    background-repeat: repeat; 
+    background-size: cover; 
+    background-color: slategrey; 
+    height: 100vh;
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    /* margin: 20px;  */
+    padding: 20px; 
+    box-sizing: border-box; 
+} 
 #choice {
     display: inline-flex;
     flex-direction: row; 
-    justify-content: center;
-    align-content: baseline;
     align-items: baseline;
     margin-bottom: 25px; 
 }
@@ -36,15 +52,25 @@
     max-height: 90%; 
 }
 .modal h2 { 
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
     font-size: xx-large;
+    color: lightslategray;
+    margin-top: 20px;
 }
 .modal p {
-    font-size: small;
+    font-size: medium;
+    color: lightgray;
 }
-.modal {
+.modal img + p {
+    margin: 15px 25px; 
+}
+.modal img:hover {
+    opacity: 0.6; 
+    transform: scale(1.1);
+    transition: all .2s; 
+}
+
+#modal {
     /* display: none;  */
     position: fixed; 
     z-index: 1; 
@@ -52,8 +78,8 @@
     top: 50px;
     width: 100%; 
     height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.4); 
+    background-color: rgba(0,0,0,0.8); 
+    margin-top: 25px; 
 }
 .modal-content {
     background-color: #fefefe;
@@ -63,14 +89,12 @@
     width: 75%; 
 }
 main {
-    background-image: url('../images/camo_images/700_FO69952069_c9d109edb493cb31debb3344d1dc10b4.jpg');    
-    background-repeat: repeat; 
-    background-size: cover; 
-    background-color: slategrey; 
     display: none; 
-    min-height: 625px; 
     flex-direction: row; 
+    justify-content: space-between;
     align-items: flex-end; 
+    margin-top: 50px; 
+    width: 100%; 
 }
 h1 {
     width: 250px; 
@@ -78,29 +102,23 @@ h1 {
     opacity: .25;
 }
 .playerCardCount {
-    border: 2px solid black; 
-    background-color: yellow;
-    width: 50px;
-    margin-bottom: 30px;
-    margin-left: 15px;      
+    border: 2px solid slategrey; 
+    background-color: #0C17D1;
+    text-align: center;
 }
 .computerCardCount {
     border: 2px solid black; 
     background-color: orangered;
-    width: 50px;
-    margin-bottom: 30px;
-    margin-right: 11px;   
+    text-align: center;   
 }
 .messaging {
     color: whitesmoke; 
     font-size: 36px; 
     font-weight: bolder;
     background-color: rgba (112,128,144,.25); 
-    width: 500px; 
-    height: 90px; 
-    position: fixed;
-    top: 75px;
-    left: 35px; 
+    width: 100%; 
+    text-align: center; 
+    height: 95px;
 }
 section {
     background-image: url('../images/camo_images/700_FO69952069_c9d109edb493cb31debb3344d1dc10b4.jpg');
@@ -111,10 +129,7 @@ section {
 }
 .battlefield { 
     display: flex; 
-    position: absolute;
-    top: 45%;
-    left: 33%;
-    justify-content: row;  
+    margin-bottom: 41px; 
 }
 #playerBattlefield {
     width: 225px;
@@ -132,86 +147,64 @@ section {
     width: 225px;
     height: 300px; 
 }
-#player {
-    position: absolute; 
-    left: 2px;  
-}
-#computer {
-    position: absolute;
-    right: 5px; 
-}  
 #player h3 {
+    color: white; 
     font-weight: bolder;
     text-align: center;
 }
 #computer h3 {
+    color: white; 
     font-weight: bolder;
     text-align: center; 
 }
-#player h4 {
-    position: absolute; 
-    bottom: 0;
-    width: 210px; 
-    margin-top: 50px; 
-    left: 3px; 
-}
-#computer h4 {
-    position: absolute; 
-    bottom: 0;
-    width: 210px; 
-    margin-top: 25px; 
-    right: 3px; 
-}
-canvas {
-    height: 250px;
-    width: 250px; 
-}
-#chartContainer {
-    margin-top: 50px; 
-    position: fixed; 
-    top: 8px; 
-    right: 16px; 
-    background-color: rgba (0,0,0,.25);
-    width: 250px; 
-    height: 250px; 
-}
-#chartContainer h2 {
-   position: absolute;
-   color: white; 
-   text-align: center;
-   margin-left: 50px;
-}
+.btn {
+    display: none; 
+    font-size: 25px;
+    padding: 10px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+} 
 #compare {
-    display: none;
-    font-size: 14px; 
-    background-color: #A80000;
-    margin: 0 auto;
-    padding: 5px;
-    display: flex;
-    justify-content: center; 
-    height: 25px; 
-    left: 25px;
-    margin-left: 400px;
+    background-color: #6A8572;
+    color: #D1D1D1; 
 }
+#compare:hover {
+    color: #6A8572;
+    background-color: #D1D1D1;
+}
+
 #drawCard {
-    background-color: #A80000;
-    font-size: 14px; 
-    margin: 0 auto;
-    padding: 5px;
-    display: flex;
-    justify-content: center; 
-    height: 25px;
-    right: 25px; 
-    margin-right: 350px;
+    background-color: #E8B00C;
+    color: #B21508;
+}
+#drawCard:hover {
+    color: #E8B00C; 
+    background-color: #B21508;
 }
 .card {
     width: 200px;
     height: 275px; 
     padding: 5px; 
     margin: 10px;
-    margin-bottom: 50px;
 }
 #instructions {
     font-size: larger; 
     text-align: center; 
+}
+
+.rotate90 {
+    transform: rotateY(90deg);
+    transition: all 0.5s;
+}
+
+.rotate360 {
+    transform: rotateY(360deg);
+    transition: all 0.5s;
+}
+#player {
+    margin-right: 30px; 
+}
+#computer {
+    margin-left: 30px; 
 }

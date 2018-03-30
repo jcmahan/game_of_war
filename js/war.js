@@ -50,8 +50,8 @@ var messageDiv = document.querySelector(".messaging");
 var showMain = document.querySelector("main");
 var p1Cards = document.getElementById("playerStack");
 var compCards = document.querySelector(".computerStack");
-var playerCount = document.querySelector(".playerCardCount");
-var computerCount = document.querySelector(".computerCardCount");
+var playerCount = document.querySelector(".playerCardCount span");
+var computerCount = document.querySelector(".computerCardCount span");
 var computerCard = document.getElementById("computerCard");
 var compareButton = document.getElementById("compare");
 var battleButton = document.getElementById("drawCard")
@@ -213,8 +213,8 @@ function render() {
     modal.style.display = playerHand.length ? 'none' : 'display';
     showMain.style.display = playerHand.length ? 'flex' : 'none';
     messageDiv.innerHTML = message;
-    playerCount.innerHTML = `Player has ` + playerHand.length + ` cards in deck.`;
-    computerCount.innerHTML = `Computer has ` + computerHand.length + ` cards in deck.`;
+    playerCount.innerHTML = playerHand.length;
+    computerCount.innerHTML = computerHand.length;
     battleButton.style.display = (playerHand.length && computerHand.length) && !inWar ? 'block' : 'none';
     compareButton.style.display = inWar ? 'block' : 'none';
     if (playerWar.length) {

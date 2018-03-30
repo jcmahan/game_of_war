@@ -105,12 +105,35 @@ h1 {
     border: 2px solid slategrey; 
     background-color: #0C17D1;
     text-align: center;
+    color: white; 
+    font-size: 12px; 
+    width: 200px;
+    margin-left: 10px; 
+    padding: 10px; 
+    border-radius: 10px; 
 }
 .computerCardCount {
     border: 2px solid black; 
     background-color: orangered;
     text-align: center;   
+    color: white; 
+    font-size: 12px; 
+    width: 200px;
+    margin-left: 10px; 
+    padding: 10px; 
+    border-radius: 10px; 
 }
+
+.computerCardCount span {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.playerCardCount span {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
 .messaging {
     color: whitesmoke; 
     font-size: 36px; 
@@ -129,7 +152,7 @@ section {
 }
 .battlefield { 
     display: flex; 
-    margin-bottom: 41px; 
+    margin-bottom: 88px; 
 }
 #playerBattlefield {
     width: 225px;
@@ -164,6 +187,7 @@ section {
     display: flex;
     justify-content: center; 
     align-items: center;
+    border-radius: 10px; 
 } 
 #compare {
     background-color: #6A8572;

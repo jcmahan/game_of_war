@@ -6,7 +6,7 @@
 
 **War** uses a standard playing card deck, the cards being valued from the lowly deuce on up through the mighty Ace (2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A).
 
-While this game looks simple, it is *slightly* complicated than it seems. Trust me. 
+While this game looks simple, it is *slightly* more complicated than it seems. Trust me. 
 
 Here's how **War** works: a deck of cards is evenly divided between two players (in this case, a player and an evil, evil *evil* computer). Each player takes the first card from their deck and throws it down, face-up, on the battlefield (AKA the computer screen upon which you're playing). On the count of three, both players reveal their respective cards, and whoever has the highest value card wins. 
 

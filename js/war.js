@@ -114,7 +114,7 @@ function doBattle(e) {
         checkValue();
         if (inWar) {
             message = "A tie! Time for WAR!!!";
-            setTimeout(function(){
+            setTimeout(function () {
                 swordClash.play();
             }, 1000)
         } else {

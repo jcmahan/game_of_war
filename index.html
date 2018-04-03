@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,17 +12,21 @@
     <script defer src="js/war.js"></script>
     <title>The Game of War</title>
 </head>
+
 <body>
     <h1>The Game of WAR</h1>
     <div class="messaging"></div>
     <main>
-        <div id="player">        
+        <div id="player">
             <h3>SOLDIER</h3>
             <div id="playerStack" class="card back"></div>
-            <h4 class="playerCardCount">PLAYER HAS<br><span></span><br>CARDS IN DECK</h4>
-        </div>        
+            <h4 class="playerCardCount">PLAYER HAS
+                <br>
+                <span></span>
+                <br>CARDS IN DECK</h4>
+        </div>
         <div class="battlefield">
-            <div id ="playerBattlefield">
+            <div id="playerBattlefield">
             </div>
             <div id="computerBattlefield">
             </div>
@@ -29,40 +34,48 @@
         <div id="computer">
             <h3>COMPUTER</h3>
             <div id="computerStack" class="card back"></div>
-            <h4 class="computerCardCount">COMPUTER HAS<br><span></span><br>CARDS IN DECK</h4></h4>
+            <h4 class="computerCardCount">COMPUTER HAS
+                <br>
+                <span></span>
+                <br>CARDS IN DECK</h4>
+            </h4>
         </div>
     </main>
-        <button id="compare" class="btn">WAR!</button>
-        <button id="drawCard" class="btn">Start New Battle</button>
+    <button id="compare" class="btn">WAR!</button>
+    <button id="drawCard" class="btn">Start New Battle</button>
     <div id="modal" class="modal">
         <h2>Choose your game length:</h2>
         <div id="choice">
             <div id="length_36">
                 <img src="images/game_length_images/6_day_war.jpg" alt="The Six-Day War">
                 <p>The Six-Day War
-                <br>(each player starts with 8 cards)</p>
-            </div> 
+                    <br>(each player starts with 8 cards)</p>
+            </div>
             <div id="length_22">
-                <img src ="images/game_length_images/e54ffe11e2f2c6e49bc7ab17fdb487d6_six_column.png" alt="The Revolutionary War">
+                <img src="images/game_length_images/e54ffe11e2f2c6e49bc7ab17fdb487d6_six_column.png" alt="The Revolutionary War">
                 <p>The U.S. Revolutionary War
-                <br>(each player starts with 15 cards)</p>
+                    <br>(each player starts with 15 cards)</p>
             </div>
             <div id="length_0">
-                <img src ="images/game_length_images/hundred-years-war-1337-1453-science-source.jpg" alt="The Hundred Years War">
+                <img src="images/game_length_images/hundred-years-war-1337-1453-science-source.jpg" alt="The Hundred Years War">
                 <p>The Hundred Years War
-                <br>(each player starts with 23 cards)</p>
+                    <br>(each player starts with 23 cards)</p>
             </div>
         </div>
-        <p id="instructions"><b>WAR</b> is a very simple card game. The goal? Get all your opponent's cards. How? Each player turns over one card... highest card value wins!
-            (Deuces are low, Aces high.) If you win the battle, you claim the cards on the field. If the cards are tied, a <b>WAR</b> ensues.   
-            Each player plays one card face down, and goes to battle again! The highest value wins. 
+        <p id="instructions">
+            <b>WAR</b> is a very simple card game. The goal? Get all your opponent's cards. How? Each player turns over one
+            card... highest card value wins! (Deuces are low, Aces high.) If you win the battle, you claim the cards on the
+            field. If the cards are tied, a
+            <b>WAR</b> ensues. Each player plays one card face down, and goes to battle again! The highest value wins.
             <br/>
+            <br/> Here's the rub: if players are still tied after the first
+            <b>WAR</b>, the United Nations gets involved and settles the battle based on card suits (Spades having the highest
+            value, followed by Hearts, then Diamonds and finally the lowly Club).
             <br/>
-            Here's the rub: if players are still tied after the first <b>WAR</b>, the United Nations gets involved and settles the battle based on card suits (Spades having the highest value, followed by Hearts, then Diamonds and finally the lowly Club).
-            <br/>
-            <br/> 
-            First to collect all the cards wins the <b>TOTAL WAR</b> & achieves world domination. 
+            <br/> First to collect all the cards wins the
+            <b>TOTAL WAR</b> & achieves world domination.
         </p>
     </div>
 </body>
+
 </html>
